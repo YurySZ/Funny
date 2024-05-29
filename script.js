@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     const noButton = document.getElementById('noButton');
     const yesButton = document.getElementById('yesButton');
-    const message = document.getElementById('message');
+    const popup = document.getElementById('popup');
+    const close = document.querySelector('.close');
 
     noButton.addEventListener('mouseover', () => {
         const container = document.querySelector('.container');
@@ -20,6 +21,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     yesButton.addEventListener('click', () => {
-        message.textContent = 'Agora sim, tô só esperando!';
+        popup.style.display = 'block';
+    });
+
+    close.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target == popup) {
+            popup.style.display = 'none';
+        }
     });
 });
